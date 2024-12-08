@@ -2,7 +2,8 @@ import prisma from "@/prisma/prisma-client";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest, { params }: {
-    params: Promise<{ id: string }>
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    params: any
 }) {
     try {
         const { id } = await params
