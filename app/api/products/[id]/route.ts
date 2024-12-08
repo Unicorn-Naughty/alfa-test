@@ -6,7 +6,6 @@ export async function GET(req: NextRequest, { params }: {
 }) {
     try {
         const { id } = await params
-        console.log(id);
         const product = await prisma.product.findFirst({
             where: {
                 id: Number(id)

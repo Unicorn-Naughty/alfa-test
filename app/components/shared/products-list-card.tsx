@@ -36,7 +36,7 @@ export const ProductsListCard: React.FC<Props> = ({
       />
       <Link
         className="before:content-[''] absolute inset-0"
-        href={`/products/${item.id}`}
+        href={`/products/product/${item.id}`}
       ></Link>
       <div className="w-[300px] mb-[15px]">
         <Image
