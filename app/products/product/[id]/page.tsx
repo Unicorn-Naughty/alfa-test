@@ -1,15 +1,22 @@
 import { ProductCard } from "@/app/components/shared/product-card";
-import { api } from "@/services/api";
+import prisma from "@/prisma/prisma-client";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const Page = async ({ params }: {params : any}) => {
+
+
+const Page = async ({ params }: { params: Promise<{ id: string }>}) => {
   const { id } = await params;
-  const product = await api.product.fetchProduct(id);
-  return (
-    <div>
-      <ProductCard item={product} />
-    </div>
-  );
+  const product = await prisma.product.findFirst({
+    where: {
+      id: Number(id),
+    },
+  });
+  if (product) {
+    return (
+      <div>
+        <ProductCard item={product} />
+      </div>
+    );
+  }
 };
 
 export default Page;
